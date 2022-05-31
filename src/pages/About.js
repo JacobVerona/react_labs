@@ -19,6 +19,9 @@ class About extends Component {
                                 <Nav.Item>
                                     <Nav.Link eventKey="third">Program</Nav.Link>
                                 </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="four">Ideas</Nav.Link>
+                                </Nav.Item>
                             </Nav>
                         </Col>
                         <Col sm={9}>
@@ -37,6 +40,12 @@ class About extends Component {
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="third">
                                     <img className="d-block w-100" src="https://s3-alpha.figma.com/hub/file/858291939/14dda654-9bf1-47a5-ba66-904aa3003c6e-cover.png" alt="picture three" />
+                                    <p>
+                                        Lorem
+                                    </p>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey="four">
+                                    <img className="d-block w-100" src="https://www.coachescongress.com/wp-content/uploads/2019/07/idea_1920-800x600.jpg" alt="picture three" />
                                     <p>
                                         Lorem
                                     </p>

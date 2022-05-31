@@ -13,7 +13,7 @@ class Blog extends Component {
                                     width={150}
                                     height={150}
                                     className="mr-3"
-                                    src="https://emgotas.files.wordpress.com/2016/11/what-is-a-team.jpg"
+                                    src="https://picsum.photos/id/34/400/400"
                                     alt="photo" />
                             </div>
                             <div className="flex-grow-1 ms-3">
@@ -30,7 +30,7 @@ class Blog extends Component {
                                     width={150}
                                     height={150}
                                     className="mr-3"
-                                    src="https://emgotas.files.wordpress.com/2016/11/what-is-a-team.jpg"
+                                    src="https://picsum.photos/id/35/400/400"
                                     alt="photo" />
                             </div>
                             <div className="flex-grow-1 ms-3">
@@ -47,7 +47,41 @@ class Blog extends Component {
                                     width={150}
                                     height={150}
                                     className="mr-3"
-                                    src="https://emgotas.files.wordpress.com/2016/11/what-is-a-team.jpg"
+                                    src="https://picsum.photos/id/36/400/400"
+                                    alt="photo" />
+                            </div>
+                            <div className="flex-grow-1 ms-3">
+                                <h5>Blog post</h5>
+                                <p>
+                                    Lorem
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="d-flex align-items-center me-5">
+                            <div className="flex-shrink-0">
+                                <img
+                                    width={150}
+                                    height={150}
+                                    className="mr-3"
+                                    src="https://picsum.photos/id/37/400/400"
+                                    alt="photo" />
+                            </div>
+                            <div className="flex-grow-1 ms-3">
+                                <h5>Blog post</h5>
+                                <p>
+                                    Lorem
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="d-flex align-items-center me-5">
+                            <div className="flex-shrink-0">
+                                <img
+                                    width={150}
+                                    height={150}
+                                    className="mr-3"
+                                    src="https://picsum.photos/id/38/400/400"
                                     alt="photo" />
                             </div>
                             <div className="flex-grow-1 ms-3">
@@ -63,11 +97,9 @@ class Blog extends Component {
 
                         <Card>
                             <ListGroup variant="flush">
-                                <ListGroup.Item>категорія 1</ListGroup.Item>
-                                <ListGroup.Item>категорія 2</ListGroup.Item>
-                                <ListGroup.Item>категорія 3</ListGroup.Item>
-                                <ListGroup.Item>категорія 4</ListGroup.Item>
-                                <ListGroup.Item>категорія 5</ListGroup.Item>
+                                <ListGroup.Item>Nature</ListGroup.Item>
+                                <ListGroup.Item>Physics</ListGroup.Item>
+                                <ListGroup.Item>Adventure</ListGroup.Item>
                             </ListGroup>
                         </Card>
                     </Col>

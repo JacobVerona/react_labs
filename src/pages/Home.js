@@ -21,7 +21,7 @@ class Home extends Component {
                                     <Card.Text>
                                         Команда 1
                                     </Card.Text>
-                                    <Button variant="primary">About team</Button>
+                                    <Button variant="primary" href="/teams/1">About team</Button>
                                 </Card.Body>
                             </Card>
                         </div>
@@ -36,7 +36,7 @@ class Home extends Component {
                                     <Card.Text>
                                         Команда 2
                                     </Card.Text>
-                                    <Button variant="primary">About team</Button>
+                                    <Button variant="primary" href="/teams/2">About team</Button>
                                 </Card.Body>
                             </Card>
                         </div>
@@ -52,7 +52,7 @@ class Home extends Component {
                                     <Card.Text>
                                         Команда 3
                                     </Card.Text>
-                                    <Button variant="primary">About team</Button>
+                                    <Button variant="primary" href="/teams/3">About team</Button>
                                 </Card.Body>
                             </Card>
                         </div>

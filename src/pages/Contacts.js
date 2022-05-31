@@ -73,8 +73,6 @@ function Contacts() {
                         onBlur={e => blurHandler(e)} as="textarea" placeholder="Enter message" rows={5}>
                     </Form.Control>
                 </Form.Group>
-
-
                 <Form.Group controlId="fromBasicCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
