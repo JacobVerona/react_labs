@@ -3,7 +3,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 
-export default function SinglePost() {
+export default function BlogPost() {
     const postId = useParams().postId;
 
     const postData = {
