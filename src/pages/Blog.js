@@ -1,151 +1,56 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useRef, useState } from 'react';
 import { Container, Col, Row, Card, ListGroup } from "react-bootstrap";
 import PostList from "../components/UI/input/PostList";
-import MyButton from "../components/UI/button/MyButton";
-import MyInput from "../components/UI/input/MyInput";
+import { createEvent } from "@testing-library/react";
+import PostForm from "../components/UI/input/PostForm";
+import MySelect from "../components/UI/select/MySelect";
 
-export default function Blog() {
+function Blog() {
     const [posts, setPosts] = useState([
         { id: 1, title: 'JavaScript', body: 'Description' },
         { id: 2, title: 'JavaScript', body: 'Description' },
-        { id: 3, title: 'JavaScript', body: 'Description' },
+        { id: 3, title: 'JavaScript', body: 'Description' }
     ])
 
-    const [post, setPost] = useState({ title: '', body: '' })
+    const [selectedSort, setSelectedSort] = useState()
 
-    const addNewPost = (e) => {
-        e.preventDefault()
-        setPosts([...posts, { ...post, id: Date.now() }])
-        setPost({ title: '', body: '' })
+    const createPost = (newPost) => {
+        setPosts([...posts, newPost])
+    }
+
+    //Одержуємо post із дочірнього компонента
+    const removePost = (post) => {
+        setPosts(posts.filter(p => p.id !== post.id))
+    }
+
+    const sortPosts = (sort) => {
+        setSelectedSort(sort)
+        setPosts([...posts].sort((a, b) => a[sort].localeCompare(b[sort])))
     }
 
     return (
-        <Container>
-            <Row>
-                <Col md="9">
-                    <div className="d-flex align-items-center me-5">
-                        <div className="flex-shrink-0">
-                            <img
-                                width={150}
-                                height={150}
-                                className="mr-3"
-                                src="https://picsum.photos/id/34/400/400"
-                                alt="photo" />
-                        </div>
-                        <div className="flex-grow-1 ms-3">
-                            <h5>Blog post</h5>
-                            <p>
-                                Lorem
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="d-flex align-items-center me-5">
-                        <div className="flex-shrink-0">
-                            <img
-                                width={150}
-                                height={150}
-                                className="mr-3"
-                                src="https://picsum.photos/id/35/400/400"
-                                alt="photo" />
-                        </div>
-                        <div className="flex-grow-1 ms-3">
-                            <h5>Blog post</h5>
-                            <p>
-                                Lorem
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="d-flex align-items-center me-5">
-                        <div className="flex-shrink-0">
-                            <img
-                                width={150}
-                                height={150}
-                                className="mr-3"
-                                src="https://picsum.photos/id/36/400/400"
-                                alt="photo" />
-                        </div>
-                        <div className="flex-grow-1 ms-3">
-                            <h5>Blog post</h5>
-                            <p>
-                                Lorem
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="d-flex align-items-center me-5">
-                        <div className="flex-shrink-0">
-                            <img
-                                width={150}
-                                height={150}
-                                className="mr-3"
-                                src="https://picsum.photos/id/37/400/400"
-                                alt="photo" />
-                        </div>
-                        <div className="flex-grow-1 ms-3">
-                            <h5>Blog post</h5>
-                            <p>
-                                Lorem
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="d-flex align-items-center me-5">
-                        <div className="flex-shrink-0">
-                            <img
-                                width={150}
-                                height={150}
-                                className="mr-3"
-                                src="https://picsum.photos/id/38/400/400"
-                                alt="photo" />
-                        </div>
-                        <div className="flex-grow-1 ms-3">
-                            <h5>Blog post</h5>
-                            <p>
-                                Lorem
-                            </p>
-                        </div>
-                    </div>
-                </Col>
-                <Col md="3">
-                    <h5 className="text-center mt-5">Категорії</h5>
-
-                    <Card>
-                        <ListGroup variant="flush">
-                            <ListGroup.Item>Nature</ListGroup.Item>
-                            <ListGroup.Item>Physics</ListGroup.Item>
-                            <ListGroup.Item>Adventure</ListGroup.Item>
-                        </ListGroup>
-                    </Card>
-                </Col>
-                <Card className="mt-3 bg-light">
-                    <Card.Body>
-                        <Card.Title>Slide widget</Card.Title>
-                        <Card.Text>
-                            Lorem
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            </Row>
-
-            <PostList posts={posts} title='Пости про природу' />
-            <div className="App">
-                <form>
-                    {/*Керований компонент*/}
-                    <MyInput
-                        value={post.title}
-                        onChange={e => setPost({ ...post, title: e.target.value })}
-                        type="text"
-                        placeholder="Назва поста" />
-                    <MyInput
-                        value={post.body}
-                        onChange={e => setPost({ ...post, body: e.target.value })}
-                        type="text"
-                        placeholder="Опис поста" />
-                    <MyButton onClick={addNewPost}>Створити пост</MyButton>
-                </form>
+        <div className="Blog">
+            <PostForm create={createPost} />
+            <hr style={{ margin: '15px 0' }} />
+            <div>
+                <MySelect
+                    value={selectedSort}
+                    onChange={sort => sortPosts(sort)}
+                    defaultValue="Сортування"
+                    options={[
+                        { value: 'title', name: 'За назвою' },
+                        { value: 'body', name: 'За описом' },
+                    ]}
+                />
             </div>
-        </Container>
+            {posts.length !== 0
+                ?
+                <PostList remove={removePost} posts={posts} title="Пости про природу" />
+                :
+                <h1 style={{ textAlign: 'center' }}> Пости не знайдено!</h1>
+            }
+        </div>
     );
 }
+
+export default Blog;

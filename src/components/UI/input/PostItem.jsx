@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classes from './posts.module.css';
+import MyButton from "../button/MyButton";
 
 const PostItem = (props) => {
 
@@ -12,9 +13,8 @@ const PostItem = (props) => {
                 </div>
             </div>
             <div className="post__btns">
-                <button>Видалити</button>
+                <MyButton onClick={() => props.remove(props.post)}>Видалити</MyButton>
             </div>
-
         </div>
     );
 }
